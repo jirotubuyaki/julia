@@ -16,7 +16,7 @@ function withlocales(f, newlocales)
             for (cat, _) in locales
                 set &= ccall(:setlocale, Cstring, (Cint, Cstring), cat, lc) != C_NULL
             end
-            set && f()
+            set && f(lc)
         end
     finally
         # recover locales
